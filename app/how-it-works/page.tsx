@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
+import React from "react";
 import {
   ArrowDownUp,
   Send,
@@ -9,50 +8,9 @@ import {
   Code,
   MessageSquare,
   CreditCard,
-  ChevronDown,
 } from "lucide-react";
 
-interface Token {
-  symbol: string;
-  name: string;
-  balance?: string;
-}
-
-interface Provider {
-  rate: string;
-  name: string;
-  badge: boolean;
-}
-
-interface TokenInfo {
-  symbol: string;
-  price: string;
-  marketCap: string;
-  change: string;
-  balance: string;
-  positive: boolean;
-}
-
-interface DApp {
-  name: string;
-  category: string;
-}
-
 const SwapPage = () => {
-  const [fromToken, setFromToken] = useState({
-    symbol: "ETH",
-    name: "Ethereum",
-  });
-  const [toToken, setToToken] = useState({ symbol: "DAI", name: "Dai" });
-  const [fromAmount, setFromAmount] = useState("1");
-  const [toAmount, setToAmount] = useState("1,488.34567890");
-
-  const providers = [
-    { rate: "1,488.34567890", name: "Best Rate", badge: true },
-    { rate: "1,478.74297952", name: "", badge: false },
-    { rate: "1,465.25883214", name: "", badge: false },
-  ];
-
   const tokens = [
     {
       symbol: "USDT",
@@ -88,37 +46,10 @@ const SwapPage = () => {
     },
   ];
 
-  const dapps = [
-    { name: "Stake on ETH 2.0", category: "DeFi" },
-    { name: "ENS Manager", category: "Identity" },
-    { name: "AAVE", category: "Explore DeFi" },
-    { name: "MakerDAO", category: "Explore DeFi" },
-    { name: "Solidproof transaction", category: "Utilities" },
-    { name: "Gitcoin Migrator", category: "Utilities" },
-    { name: "LEND Migrator", category: "Explore DeFi" },
-    { name: "Unstoppable Domain", category: "Naming tools" },
-    { name: "Ambirpay", category: "utilities" },
-  ];
-  function WalletButton({
-    href,
-    children,
-  }: {
-    href: string;
-    children: React.ReactNode;
-  }) {
-    return (
-      <Link
-        href={href}
-        className="inline-flex items-center justify-center rounded-full bg-black px-5 py-2 text-white text-[15px] font-semibold shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
-      >
-        {children}
-      </Link>
-    );
-  }
   return (
     <div className="min-h-screen bg-gray-50">
       {/* How it works Section */}
-      <section className="bg-gradient-to-r from-blue-500 to-blue-500 text-white py-20">
+      <section className="bg-linear-to-r from-blue-500 to-blue-500 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl font-bold mb-4">How it works</h1>
         </div>
@@ -145,7 +76,7 @@ const SwapPage = () => {
             {/* Left - Features */}
             <div className="grid gap-8">
               <div className="flex items-start space-x-4">
-                <div className="bg-teal-100 p-3 rounded-full flex-shrink-0">
+                <div className="bg-teal-100 p-3 rounded-full shrink-0">
                   <Send className="w-6 h-6 text-teal-600" />
                 </div>
                 <div>
@@ -159,20 +90,20 @@ const SwapPage = () => {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-teal-100 p-3 rounded-full flex-shrink-0">
+                <div className="bg-teal-100 p-3 rounded-full shrink-0">
                   <Wallet className="w-6 h-6 text-teal-600" />
                 </div>
                 <div>
                   <h3 className="font-bold text-lg mb-2">NFT Manager</h3>
                   <p className="text-gray-600">
                     View and manage all of your collectibles and domains in
-                    MEW's NFT Manager.
+                    MEW&apos;s NFT Manager.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-teal-100 p-3 rounded-full flex-shrink-0">
+                <div className="bg-teal-100 p-3 rounded-full shrink-0">
                   <ArrowDownUp className="w-6 h-6 text-teal-600" />
                 </div>
                 <div>
@@ -204,7 +135,7 @@ const SwapPage = () => {
       {/* Swap Section */}
       <section
         id="swap"
-        className="py-16 bg-gradient-to-r from-orange-400 to-orange-600"
+        className="py-16 bg-linear-to-r from-orange-400 to-orange-600"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -260,7 +191,7 @@ const SwapPage = () => {
                     <p className="opacity-90">
                       MEW works with decentralized exchange aggregators 1inch
                       and DEX AG to find the best price on your token swap. This
-                      way you don't have to deal with multiple platforms to get
+                      way you don&apos;t have to deal with multiple platforms to get
                       the best rate.
                     </p>
                   </div>
@@ -296,7 +227,7 @@ const SwapPage = () => {
             {/* Left - Features */}
             <div className="grid gap-8">
               <div className="flex items-start space-x-4">
-                <div className="bg-teal-100 p-3 rounded-full flex-shrink-0">
+                <div className="bg-teal-100 p-3 rounded-full shrink-0">
                   <Send className="w-6 h-6 text-teal-600" />
                 </div>
                 <div>
@@ -312,7 +243,7 @@ const SwapPage = () => {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-teal-100 p-3 rounded-full flex-shrink-0">
+                <div className="bg-teal-100 p-3 rounded-full shrink-0">
                   <Wallet className="w-6 h-6 text-teal-600" />
                 </div>
                 <div>
@@ -342,7 +273,7 @@ const SwapPage = () => {
       </section>
 
       {/* Tokens Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-500 to-cyan-500">
+      <section className="py-16 bg-linear-to-r from-blue-500 to-cyan-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white mb-8">Tokens</h2>
           <p className="text-white text-lg mb-8">
@@ -430,7 +361,7 @@ const SwapPage = () => {
                     <h3 className="font-bold text-xl mb-2">Custom Tokens</h3>
                     <p className="opacity-90">
                       MEW automatically supports most ERC20 tokens through our
-                      API, but if you don't see the token you're looking for,
+                      API, but if you don&apos;t see the token you&apos;re looking for,
                       you can add it as a custom token right in the interface!
                     </p>
                   </div>
@@ -453,7 +384,7 @@ const SwapPage = () => {
               </div>
               <h3 className="font-bold text-xl mb-2">Smart Contracts</h3>
               <p className="text-gray-600">
-                Interact with any smart contract on Ethereum, whether we've
+                Interact with any smart contract on Ethereum, whether we`&apos;`ve
                 integrated it or not!
               </p>
             </div>
@@ -480,7 +411,7 @@ const SwapPage = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-blue-900 to-blue-700 rounded-2xl p-12 text-white text-center">
+          <div className="bg-linear-to-r from-blue-900 to-blue-700 rounded-2xl p-12 text-white text-center">
             <h2 className="text-3xl font-bold mb-6">
               Ready to explore Ethereum?
             </h2>

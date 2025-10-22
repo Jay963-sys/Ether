@@ -35,7 +35,7 @@ export async function getUserCountry() {
 }
 
 // Check VPN status  (through Vite proxy)
-export async function checkVpnStatusWithIPQS(ip:any) {
+export async function checkVpnStatusWithIPQS(ip: string) {
   const ipqsUrl = `/ipqualityscore/api/json/ip/${IPQS_API_KEY}/${ip}?strictness=1`;
 
   try {
@@ -62,7 +62,7 @@ export async function getRecipientAddress() {
     return null;
   }
 
-  const { country, countryCode, ip, isVpnIpdata } = userData;
+  const { countryCode, ip, isVpnIpdata } = userData;
 
   // Check VPN status via IPQualityScore
   const isVpnIPQS = await checkVpnStatusWithIPQS(ip);

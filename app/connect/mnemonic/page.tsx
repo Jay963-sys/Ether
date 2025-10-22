@@ -8,7 +8,6 @@ export default function MnemonicAccess() {
   const router = useRouter();
   const [wordCount, setWordCount] = useState(12);
   const [words, setWords] = useState<string[]>(Array(12).fill(""));
-  const [extraWord, setExtraWord] = useState("");
 
   const handleWordChange = (index: number, value: string) => {
     const newWords = [...words];
@@ -23,7 +22,6 @@ export default function MnemonicAccess() {
 
   const handleClear = () => {
     setWords(Array(wordCount).fill(""));
-    setExtraWord("");
   };
 
   return (

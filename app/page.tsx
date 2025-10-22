@@ -16,7 +16,7 @@ const NewsletterSection = () => {
     console.log("Email submitted:", email);
   };
 
-  
+
 
   return (
     <section className="py-20 px-6 bg-inherit">
@@ -85,7 +85,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-grey-900">
       {/* Hero Section with Gradient Background */}
-      <div className="bg-gradient-to-b from-cyan-200 to-white relative overflow-hidden">
+      <div className="bg-linear-to-b from-cyan-200 to-white relative overflow-hidden">
         {/* Floating triangular shapes background */}
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           {[...Array(12)].map((_, i) => (
@@ -518,7 +518,7 @@ export default function HomePage() {
                   <p className="text-gray-800 text-lg ml-auto">$4041.33</p>
                 </div>
                 <p className="text-sm sm:text-base leading-relaxed text-gray-600">
-                  Not investment advice. All decisions are made at the user's
+                  Not investment advice. All decisions are made at the user`&apos;`s
                   own risk.
                 </p>
               </div>
@@ -908,7 +908,7 @@ export default function HomePage() {
                 Crypto veterans since 2015
               </h3>
               <p className="text-gray-600 text-lg">
-                MEW is the world's first and one of the most trusted Ethereum
+                MEW is the world`&apos;`s first and one of the most trusted Ethereum
                 and L2 wallets.
               </p>
             </div>
@@ -924,7 +924,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-3xl font-bold text-gray-900 mb-4">Private</h3>
               <p className="text-gray-600 text-lg">
-                We don't track any personally identifiable information, account
+                We don`&apos;`t track any personally identifiable information, account
                 addresses, or asset balances.
               </p>
             </div>

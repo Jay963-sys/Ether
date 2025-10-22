@@ -22,11 +22,11 @@
   }
 
   body {
-    @apply bg-[var(--background)] text-[var(--foreground)] antialiased;
+    @apply bg-(--background) text-(--foreground) antialiased;
     font-family: "DM Sans", "Satoshi", sans-serif;
   }
 
   * {
-    @apply border-[var(--border)];
+    @apply border-(--border);
   }
 }

@@ -1,4 +1,3 @@
-import { solana } from "@reown/appkit/networks";
 import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
 import { cookieStorage, createStorage } from "wagmi";
 import { injected, metaMask, safe, walletConnect } from "wagmi/connectors";
@@ -21,12 +20,8 @@ import {
   garnet,
   pgn,
   zora,
-  optimismSepolia,
   cyberTestnet,
-  zoraSepolia,
-  zoraTestnet,
   linea,
-  polygonZkEvmTestnet,
   immutableZkEvm,
   cronos,
   palm,
@@ -56,7 +51,7 @@ const metadata = {
   ],
 };
 
-// Create wagmiConfig
+// Create wagmiConfig - only EVM chains for wagmi
 const chains = [
   mainnet,
   polygon,
@@ -81,7 +76,6 @@ const chains = [
   immutableZkEvm,
   cronos,
   palm,
-  solana,
   astar,
   acala,
   aurora,
@@ -91,10 +85,10 @@ const chains = [
   zksync,
   kava,
   moonbeam,
-];
+] as const;
 
 export const config = defaultWagmiConfig({
-  chains: chains as any,
+  chains,
   projectId,
   metadata,
   ssr: false,
