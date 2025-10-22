@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Inter } from "next/font/google";
 import LayoutClientWrapper from "../components/LayoutClientWrapper";
 import FooterWrapper from "../components/FooterWrapper";
-
+import WagmiRainbowKitProvider from "./wallet/_components/WagmiRainbowKitProvider";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -47,6 +47,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${satoshi.variable} ${inter.variable} antialiased`}
       >
+        <WagmiRainbowKitProvider>
+
+       
         <ToastContainer
           autoClose={2000}
           hideProgressBar={true}
@@ -56,6 +59,7 @@ export default function RootLayout({
           <div className="pt-50">{children}</div>
           <FooterWrapper />
         </LayoutClientWrapper>
+        </WagmiRainbowKitProvider>
       </body>
     </html>
   );
