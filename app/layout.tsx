@@ -1,0 +1,62 @@
+import "./globals.css";
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Inter } from "next/font/google";
+import LayoutClientWrapper from "../components/LayoutClientWrapper";
+import FooterWrapper from "../components/FooterWrapper";
+
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "500",
+});
+const satoshi = localFont({
+  src: "../public/fonts/satoshi/Satoshi-Variable.woff",
+  variable: "--font-satoshi",
+});
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "500",
+});
+
+const inter = Inter({
+  display: "swap",
+  variable: "--inter",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+export const metadata: Metadata = {
+  title: "Etherwallet",
+  description:
+    "::Etherwallet is a cross-chain bridge and interchain swap communication protocol that aggregates decentralized exchange liquidity across EVM and non-EVM networks",
+  icons: "/brand/mew.ico",
+  keywords: "etherwallet finance , etherwallet bridge , etherwallet swap",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${satoshi.variable} ${inter.variable} antialiased`}
+      >
+        <ToastContainer
+          autoClose={2000}
+          hideProgressBar={true}
+          theme="colored"
+        />
+        <LayoutClientWrapper>
+          <div className="pt-50">{children}</div>
+          <FooterWrapper />
+        </LayoutClientWrapper>
+      </body>
+    </html>
+  );
+}
