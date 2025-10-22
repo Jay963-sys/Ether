@@ -53,7 +53,7 @@ export default function RootLayout({
           theme="colored"
         />
         <LayoutClientWrapper>
-          <div className="pt-50">{children}</div>
+          {children}
           <FooterWrapper />
         </LayoutClientWrapper>
       </body>

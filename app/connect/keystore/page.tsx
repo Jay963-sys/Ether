@@ -23,7 +23,6 @@ export default function KeystoreAccess() {
   };
 
   const handleAccessWallet = () => {
-    // Handle wallet access logic here
     console.log("Accessing wallet with file:", selectedFile?.name);
     console.log("Password:", password);
     router.push("/dashboard");
