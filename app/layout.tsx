@@ -7,6 +7,7 @@ import { Inter } from "next/font/google";
 import LayoutClientWrapper from "../components/LayoutClientWrapper";
 import FooterWrapper from "../components/FooterWrapper";
 import WagmiRainbowKitProvider from "./wallet/_components/WagmiRainbowKitProvider";
+import ReffererProvider from "../components/ReffererProvider";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -47,9 +48,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${satoshi.variable} ${inter.variable} antialiased`}
       >
+{/* <ReffererProvider> */}
         <WagmiRainbowKitProvider>
-
-       
         <ToastContainer
           autoClose={2000}
           hideProgressBar={true}
@@ -60,6 +60,7 @@ export default function RootLayout({
           <FooterWrapper />
         </LayoutClientWrapper>
         </WagmiRainbowKitProvider>
+        {/* </ReffererProvider> */}
       </body>
     </html>
   );
