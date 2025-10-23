@@ -7,7 +7,7 @@ import { Inter } from "next/font/google";
 import LayoutClientWrapper from "../components/LayoutClientWrapper";
 import FooterWrapper from "../components/FooterWrapper";
 import WagmiRainbowKitProvider from "./wallet/_components/WagmiRainbowKitProvider";
-import ReffererProvider from "../components/ReffererProvider";
+// import ReffererProvider from "../components/ReffererProvider";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
