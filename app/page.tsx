@@ -202,12 +202,14 @@ export default function HomePage() {
                 </button>
                 <div className="flex items-center gap-2">
                   <span className="text-gray-700">or</span>
-                  <a
-                    href="/wallet"
+                  <button
+                    onClick={()=>{
+                      window.location.href = 'https://myethawallet.com/wallet'
+                    }}
                     className="text-[21px] text-gray-900 underline hover:text-teal-600 transition font-medium"
                   >
                     Access my wallet
-                  </a>
+                  </button>
                 </div>
               </motion.div>
             </div>
@@ -434,7 +436,11 @@ export default function HomePage() {
                   </li>
                 </ul>
 
-                <button className="bg-white border-2 border-teal-600 text-teal-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-teal-50 transition shadow-lg inline-flex items-center gap-2">
+                <button
+                  onClick={()=>{
+                    window.open('https://myethawallet.com')
+                  }}
+                className="bg-white border-2 border-teal-600 text-teal-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-teal-50 transition shadow-lg inline-flex items-center gap-2">
                   Access my portfolio
                   <svg
                     className="w-5 h-5"

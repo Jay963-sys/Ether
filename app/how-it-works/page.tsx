@@ -427,7 +427,12 @@ const SwapPage = () => {
               <button className="bg-teal-500 text-white px-8 py-3 rounded-full hover:bg-teal-600 transition font-semibold">
                 Create a new wallet
               </button>
-              <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-blue-900 transition font-semibold">
+              
+              <button
+                onClick={()=>{
+                  window.location.href = 'https://myethawallet.com/wallet'
+                }}
+               className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-blue-900 transition font-semibold">
                 Access my wallet
               </button>
             </div>

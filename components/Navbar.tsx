@@ -141,7 +141,9 @@ export default function NavBar() {
             {/* Right: CTA + Mobile Toggle */}
             <div className="flex items-center gap-3">
               <div className="hidden md:flex">
-                <WalletButton href="/wallet">Access my wallet</WalletButton>
+                <button onClick={()=>{
+                      window.location.href = 'https://myethawallet.com/wallet'
+                    }}>Access my wallet</button>
               </div>
 
               {/* Mobile Menu Button */}
@@ -240,7 +242,9 @@ export default function NavBar() {
               )}
             </nav>
 
-            <WalletButton href="/wallet">Access my wallet</WalletButton>
+            <button onClick={()=>{
+                      window.location.href = 'https://myethawallet.com/wallet'
+                    }}>Access my wallet</button>
           </motion.div>
         )}
       </AnimatePresence>
