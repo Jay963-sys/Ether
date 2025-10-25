@@ -1,3 +1,21 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'MyEtherWallet (MEW) | Secure Ethereum & Web3 Wallet for Crypto Users',
+  description: 'Access Ethereum and Web3 safely with MyEtherWallet (MEW). Create a free wallet, buy, swap, stake, and explore dApps — trusted by millions since 2015',
+  keywords: 'MyEtherWallet, MEW, Ethereum wallet, Web3 wallet, crypto wallet, DeFi, blockchain, cryptocurrency, secure wallet',
+  openGraph: {
+    title: 'MyEtherWallet (MEW) | Secure Ethereum & Web3 Wallet for Crypto Users',
+    description: 'Access Ethereum and Web3 safely with MyEtherWallet (MEW). Create a free wallet, buy, swap, stake, and explore dApps — trusted by millions since 2015',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'MyEtherWallet (MEW) | Secure Ethereum & Web3 Wallet for Crypto Users',
+    description: 'Access Ethereum and Web3 safely with MyEtherWallet (MEW). Create a free wallet, buy, swap, stake, and explore dApps — trusted by millions since 2015',
+  },
+};
+
 export default function InfoPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">

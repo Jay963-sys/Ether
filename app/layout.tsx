@@ -32,11 +32,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Etherwallet",
+  title: "MyEtherWallet (MEW) | Secure Ethereum & Web3 Wallet for Crypto Users",
   description:
-    "::Etherwallet is a cross-chain bridge and interchain swap communication protocol that aggregates decentralized exchange liquidity across EVM and non-EVM networks",
+    "Access Ethereum and Web3 safely with MyEtherWallet (MEW). Create a free wallet, buy, swap, stake, and explore dApps — trusted by millions since 2015",
   icons: "/brand/mew.ico",
-  keywords: "etherwallet finance , etherwallet bridge , etherwallet swap",
+  keywords: "MyEtherWallet, MEW, Ethereum wallet, Web3 wallet, crypto wallet, DeFi, blockchain, cryptocurrency, secure wallet",
+  openGraph: {
+    title: "MyEtherWallet (MEW) | Secure Ethereum & Web3 Wallet for Crypto Users",
+    description: "Access Ethereum and Web3 safely with MyEtherWallet (MEW). Create a free wallet, buy, swap, stake, and explore dApps — trusted by millions since 2015",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MyEtherWallet (MEW) | Secure Ethereum & Web3 Wallet for Crypto Users",
+    description: "Access Ethereum and Web3 safely with MyEtherWallet (MEW). Create a free wallet, buy, swap, stake, and explore dApps — trusted by millions since 2015",
+  },
 };
 
 export default function RootLayout({
