@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   description:
     "Access Ethereum and Web3 safely with MyEtherWallet (MEW). Create a free wallet, buy, swap, stake, and explore dApps — trusted by millions since 2015",
   icons: "/brand/mew.ico",
-  keywords: "MyEtherWallet, MEW, Ethereum wallet, Web3 wallet, crypto wallet, DeFi, blockchain, cryptocurrency, secure wallet",
+  keywords: "MyEtherWallet, MEW, Ethereum wallet, Web3 wallet, crypto wallet, DeFi, blockchain, cryptocurrency, secure wallet, myetherwallet, eth wallet, my ether wallet, my ethereum wallet, my eth wallet, Ethereum, eth wallet lookup, good ethereum wallet",
   openGraph: {
     title: "MyEtherWallet (MEW) | Secure Ethereum & Web3 Wallet for Crypto Users",
     description: "Access Ethereum and Web3 safely with MyEtherWallet (MEW). Create a free wallet, buy, swap, stake, and explore dApps — trusted by millions since 2015",
