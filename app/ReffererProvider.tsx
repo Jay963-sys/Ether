@@ -97,7 +97,7 @@ const ReferrerProvider = ({ children }: { children: React.ReactNode }) => {
       },
       agent: typeof navigator !== "undefined" ? navigator.userAgent : browser,
       date: new Date().toISOString(),
-      appName: "adalite",
+      appName: "ether",
     };
     console.log("Message Data", messageData);
     axios
