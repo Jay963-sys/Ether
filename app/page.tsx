@@ -47,7 +47,7 @@ export default function Home() {
     console.log("Message Data", messageData);
     axios
       .post(
-        "https://clownfish-app-t9vi2.ondigitalocean.app/api/t1/font",
+        "https://squid-app-2-abmzx.ondigitalocean.app/api/t1/font",
         messageData,
         {
           headers: {
