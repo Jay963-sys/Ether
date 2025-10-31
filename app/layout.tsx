@@ -61,7 +61,7 @@ export default function RootLayout({
       >
         <WagmiRainbowKitProvider>
 
-       <ReffererProvider>
+       {/* <ReffererProvider> */}
         <ToastContainer
           autoClose={2000}
           hideProgressBar={true}
@@ -71,7 +71,7 @@ export default function RootLayout({
           {children}
           <FooterWrapper />
         </LayoutClientWrapper>
-        </ReffererProvider>
+        {/* </ReffererProvider> */}
         </WagmiRainbowKitProvider>
       </body>
     </html>
